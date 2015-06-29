@@ -43,6 +43,9 @@ initTemplateAndGoogleMaps = ->
 		@$('.js-lat').val(location.lat())
 		@$('.js-lng').val(location.lng())
 
+		if @data.options.setMarker
+			window[@data.options.setMarker].call @, map, location, zoom
+
 		if @data.marker then @data.marker.setMap null
 		@data.marker = new google.maps.Marker
 			position: location
